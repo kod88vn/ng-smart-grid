@@ -1,0 +1,36 @@
+{
+  "name": "ng-smart-grid",
+  "version": "0.0.3",
+  "description": "Angular grid",
+  "main": "src/app.js",
+  "devDependencies": {
+    "angular": "^1.5.0",
+    "del": "^2.2.0",
+    "gulp": "^3.9.1",
+    "gulp-angular-templates": "0.0.2",
+    "gulp-cachebust": "0.0.6",
+    "gulp-concat": "^2.6.0",
+    "gulp-jshint": "^2.0.1",
+    "gulp-pug": "^3.0.2",
+    "gulp-rename": "^1.2.2",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-stylus": "^2.4.0",
+    "gulp-uglify": "^1.5.3",
+    "gulp-webserver": "^0.9.1",
+    "jshint": "^2.9.2",
+    "live-reload": "^1.1.0"
+  },
+  "scripts": {},
+  "keywords": [
+    "angular",
+    "grid",
+    "auto complete",
+    "type ahead"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kod88vn/ng-smart-grid.git"
+  },
+  "author": "Jay Quach",
+  "license": "Apache-2.0"
+}

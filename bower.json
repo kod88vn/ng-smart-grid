@@ -1,0 +1,21 @@
+{
+  "name": "ng-smart-input",
+  "description": "Angular smart grid",
+  "main": "app.js",
+  "authors": [
+    "Jay Quach"
+  ],
+  "license": "Apache-2.0",
+  "keywords": [
+    "angular",
+    "grid"
+  ],
+  "homepage": "https://github.com/kod88vn/ng-smart-grid",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
