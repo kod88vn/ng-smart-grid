@@ -1,0 +1,70 @@
+.cursor-pointer
+  cursor pointer
+.green-enable
+  color green
+.yellow-pause
+  color brown
+.j-grid
+  white-space nowrap
+  position relative
+  // &:after
+  //   content ""
+  //   position absolute
+  //   top 0
+  //   bottom 0
+  //   right 0
+  //   background linear-gradient(to right, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%)
+  //   width 30px
+  .j-table
+    display inline-block
+    * tr.totals
+      height 42px
+      min-height 42px
+  .locked-table
+    overflow hidden
+  .free-table
+    overflow-x auto
+    width 100%
+  .height-35
+    height 35px
+  .table-striped > tbody > tr:nth-of-type(2n+1)
+    background-color #fbfafa
+  .table-striped > tbody > tr.totals
+    background-color #f9fcfd
+    th
+      background-color transparent
+      color #555
+  tr.totals td
+    font-weight 600
+  .pad-0
+    padding 0
+  table > tbody > tr > td, table > thead > tr > th
+    padding 12px 16px
+    font-size 13px
+    border-color #eaeaea
+    border-left 1px solid #eaeaea
+    &:first-child
+      border-left none
+  .free-table table > tbody > tr > td:first-child, .free-table table > thead > tr > th:first-child
+    border-left 1px solid #eaeaea
+  table > thead:first-child > tr:first-child > th
+    color #555555
+    font-size 14px
+    font-weight 600
+  th .fa-circle
+    color #dedede
+  .width-12
+    width 12px
+  .scrollbar-replacement
+    padding 0
+    margin 0
+    border 0
+    background-color #F8F8F8
+  .as-sortable-item-handle
+    cursor move
+  .breakout
+    margin 0
+    padding 0
+  .free-table
+    vertical-align top
+

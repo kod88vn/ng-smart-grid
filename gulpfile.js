@@ -11,13 +11,11 @@ var angularTemplates = require('gulp-angular-templates');
 var pug = require('gulp-pug');
 var stylus = require('gulp-stylus');
 
-gulp.task('clean', function (done) {
-  del([
-    // 'dist'
-  ], done());
+gulp.task('clean', function () {
+  return del(['dist']);
 });
 
-gulp.task('jshint', function() {
+gulp.task('jshint', ['clean'], function() {
   gulp.src('/src/**/*.js')
     .pipe(jshint())
     .pipe(jshint.reporter('default'));
@@ -26,10 +24,10 @@ gulp.task('jshint', function() {
 gulp.task('html', ['jshint', 'clean'], function () {
   gulp.src("src/**/*.pug")
     .pipe(pug())
-    .pipe(angularTemplates({
-      module: 'ng-smart-input',
-      standAlone: false
-    }))
+    // .pipe(angularTemplates({
+    //   module: 'ng-smart-grid',
+    //   standAlone: false
+    // }))
     .pipe(gulp.dest('dist/templates'));
 });
 
@@ -45,14 +43,15 @@ gulp.task('css', ['clean'], function () {
 
 gulp.task('concat', ['html', 'clean'], function() {
   return gulp.src([
-      'src/components/**/*.js',
-      'dist/templates/*.js',
+      './dist/templates/components/ngSmartGrid.html.js',
+      './src/components/**/*.js'
   	])
-  	.pipe(concat('app.js'))
   	.pipe(sourcemaps.init())
+    .pipe(concat('app.js'))
     .pipe(sourcemaps.write())
     .pipe(gulp.dest('dist'));
 });
+
 
 gulp.task('compress', ['concat'], function() {
   return gulp.src('dist/app.js')
@@ -79,7 +78,7 @@ gulp.task('webserver', ['build'], function() {
   gulp.src('./')
     .pipe(webserver({
       livereload: true,
-      directoryListing: true
+      directoryListing: true,
     }));
 });
 

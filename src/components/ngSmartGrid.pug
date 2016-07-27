@@ -1,1 +1,59 @@
-| Smart Grid is Here!!!
+button.btn.btn-sm.btn-default(data-toggle='modal' data-target='\#{{sgc.config.editPanelId}}', title='Grid options')
+  i.fa.fa-cog
+.j-grid
+  .j-table.locked-table
+    table.table.table-condensed.table-striped.mgn-bottom-0
+      thead
+        tr
+          th
+            a.fa-fw.no-style.cursor-pointer(data-ng-click='sgc.toggleSelectAll($event)' )
+              i.fa.fa-fw(data-ng-class='{true:"fa-check-square", false:"fa-square"}[sgc.isAllChecked]', data-ng-hide='sgc.isIndeterminate')
+              i.fa.fa-fw.fa-minus-square(data-ng-show='sgc.isIndeterminate')
+          th(data-ng-repeat='p in sgc.sortedPreferences | filter:{locked:true, hidden:false}')
+            span(ng-bind-html='::p.displayTitle', compile-added-template, data-ng-class='{true:"", false:"cursor-pointer"}[p.isNotSortable === true]', data-ng-click='sgc.onSortClick(p)')
+      tbody
+        tr.totals
+          td.height-35.totals-cell
+          td(data-ng-repeat='p in sgc.sortedPreferences | filter:{locked:true, hidden:false}')
+            span(data-ng-bind-html='::p.aggregationValue')
+        tr.height-tbd(ng-repeat='r in sgc.sortedRows')
+          td
+            a.no-style.cursor-pointer
+              i.fa.fa-fw(data-ng-class='{true:"fa-check-square", false:"fa-square"}[r.checked]', data-ng-click='sgc.onCheckClick(r)')
+          td(ng-repeat='d in r.values | filter:{locked:true}', data-ng-style='sgc.determinePadLeft(r.level, d.column)')
+            span.truncate(ng-bind-html='::d.value', compile-added-template)
+  .j-table.free-table
+    table.table.table-condensed.table-striped.mgn-bottom-0
+      thead
+        tr
+          th(data-ng-repeat='p in sgc.sortedPreferences | filter:{locked:false, hidden:false}')
+            span(ng-bind-html='::p.displayTitle', compile-added-template, data-ng-class='{true:"", false:"cursor-pointer"}[p.isNotSortable === true]', data-ng-click='sgc.onSortClick(p)')
+      tbody
+        tr.totals
+          td.height-35.totals-cell(data-ng-repeat='p in sgc.sortedPreferences | filter:{locked:false, hidden:false}')
+            span(data-ng-bind-html='::p.aggregationValue')
+        tr.height-tbd(ng-repeat='r in sgc.sortedRows')
+          td(ng-repeat='d in r.values | filter:{locked:false}', data-ng-style='sgc.determinePadLeft(r.level, d.column)')
+            span.truncate(ng-bind-html='::d.value', compile-added-template)
+  .modal.fade(id='{{sgc.config.editPanelId}}', role='dialog', aria-hidden='true')
+    .modal-dialog
+      .modal-content
+        .modal-body
+          button.close(data-dismiss='modal') &times;
+          .config-columns.max-height-300.overflow-y-auto.mgn-top-neg-1
+            table.table.table-condensed.table-striped.mgn-bottom-0
+              tbody(data-as-sortable='sgc.dragControlListeners()', data-ng-model='sgc.sortedPreferences')
+                tr.as-sortable-item(data-ng-repeat='p in sgc.sortedPreferences', data-as-sortable-item)
+                  td.width-30.text-center.cursor-pointer.as-sortable-item-handle(data-as-sortable-item-handle, data-ng-hide='sgc.searchText.length > 0')
+                    i.fa.fa-navicon
+                  td
+                    span(ng-show='p.preferencesTitle === undefined', ng-bind-html='::p.displayTitle')
+                    span(ng-hide='p.preferencesTitle === undefined', ng-bind='p.preferencesTitle')
+                  td(data-ng-click='sgc.onLockClick(p)').width-60.cursor-pointer.text-center
+                    i.fa(data-ng-class='{true:"fa-lock", false:"fa-unlock"}[p.locked]')
+                  td(data-ng-click='sgc.onVisibleClick(p)').width-60.cursor-pointer.text-center
+                    i.fa.fa-fw(data-ng-class='{false:"fa-eye", true:"fa-eye-slash hint"}[p.hidden]')
+                  td.scrollbar-replacement.pad-0
+
+
+
