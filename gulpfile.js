@@ -10,6 +10,8 @@ var webserver = require('gulp-webserver');
 var angularTemplates = require('gulp-angular-templates');
 var pug = require('gulp-pug');
 var stylus = require('gulp-stylus');
+var watch = require('gulp-watch');
+var batch = require('gulp-batch');
 
 gulp.task('clean', function () {
   return del(['dist']);
@@ -69,9 +71,9 @@ gulp.task('build', [
 ]);
 
 gulp.task('watch', function() {
-  return gulp.watch([
-    './src/**/*.*'
-  ], ['build']);
+  watch('./src/**/*.*', batch(function (events, done) {
+    gulp.start('build', done);
+  }));
 });
 
 gulp.task('webserver', ['build'], function() {
@@ -82,4 +84,4 @@ gulp.task('webserver', ['build'], function() {
     }));
 });
 
-gulp.task('serve', ['watch', 'build', 'webserver']);
+gulp.task('serve', ['watch', 'webserver']);
