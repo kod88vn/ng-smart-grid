@@ -24,6 +24,12 @@
     vm.onLockClick = toggleLock;
     vm.isAllChecked = true;
 
+    var gridId = vm.config.gridId +'-grid';
+
+    $(window).on('resize', function() {
+      adjustFreeWidth();
+    });
+
     $scope.$watchCollection(function() {
       return vm.config.preferences;
     }, function(preferences) {
@@ -48,6 +54,11 @@
         vm.sortedRows = [];
       }
     });
+
+    function adjustFreeWidth() {
+      $('#' + gridId + ' .free-table').css('max-width',
+        $(window).width() - $('#' + gridId + ' .locked-table').width() - 30 + 'px');
+    }
 
     function toggleLock(p) {
       p.locked = !p.locked;
@@ -138,7 +149,9 @@
         // }
       });
 
-
+      $timeout(function() {
+        adjustFreeWidth();
+      });
     }
 
   }

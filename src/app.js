@@ -11,11 +11,12 @@
     var mockData = [
       {id: 1, name: 'Entity A', status: 'active', locked: true, age: 1, value:'just some value', address: 'somewhere out there', dummy: 'Some dummy data to make it really long', anotherDummy: 'Another dummy value'},
       {id: 2, name: 'Entity B', status: 'inactive', age: 5, value:'just some value', address: 'somewhere out there', dummy: 'Some dummy data to make it really long', anotherDummy: 'Another dummy value'},
-      {id: 3, name: 'Entity C', status: 'paused', age: 9, value:'just some value', address: 'somewhere out there', dummy: 'Some dummy data to make it really long', anotherDummy: 'Another dummy value'}
+      {id: 3, name: 'Entity C', status: 'paused', age: 9, value:'just some value', address: 'somewhere out there', dummy: 'Some dummy data to make it really long', anotherDummy: 'Another dummy value'},
+      {id: 4, name: 'Entity D', status: 'paused', age: 9, value:'just some value', address: 'somewhere out there', dummy: 'Some dummy data to make it really long', anotherDummy: 'Another dummy value'}
     ];
 
 		vm.baseGridConfig = {
-      editPanelId: 'base',
+      gridId: 'base',
       preferences: [
         {id: 'id', title: 'Id', locked: true},
         {id: 'status', title: 'Status', locked: false},
@@ -32,7 +33,7 @@
     }
 
     vm.fancyGridConfig = {
-      editPanelId: 'fancy',
+      gridId: 'fancy',
       preferences: [
         {id: 'id', title: 'Id', locked: true},
         {id: 'status', title: '<i class="fa fa-circle fa-fw" title="Status"></i>', displayFn: getStatusClass, locked: false},

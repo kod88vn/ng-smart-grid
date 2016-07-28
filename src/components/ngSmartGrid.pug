@@ -1,6 +1,6 @@
-button.btn.btn-sm.btn-default(data-toggle='modal' data-target='\#{{sgc.config.editPanelId}}', title='Grid options')
+button.btn.btn-sm.btn-default(data-toggle='modal' data-target='\#{{sgc.config.gridId}}-config', title='Grid options')
   i.fa.fa-cog
-.j-grid
+.j-grid(id='{{sgc.config.gridId}}-grid')
   .j-table.locked-table
     table.table.table-condensed.table-striped.mgn-bottom-0
       thead
@@ -35,7 +35,7 @@ button.btn.btn-sm.btn-default(data-toggle='modal' data-target='\#{{sgc.config.ed
         tr.height-tbd(ng-repeat='r in sgc.sortedRows')
           td(ng-repeat='d in r.values | filter:{locked:false}', data-ng-style='sgc.determinePadLeft(r.level, d.column)')
             span.truncate(ng-bind-html='::d.value', compile-added-template)
-  .modal.fade(id='{{sgc.config.editPanelId}}', role='dialog', aria-hidden='true')
+  .modal.fade(id='{{sgc.config.gridId}}-config', role='dialog', aria-hidden='true')
     .modal-dialog
       .modal-content
         .modal-body
