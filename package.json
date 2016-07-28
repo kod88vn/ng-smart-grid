@@ -8,6 +8,7 @@
     "del": "^2.2.0",
     "gulp": "^3.9.1",
     "gulp-angular-templates": "0.0.2",
+    "gulp-batch": "^1.0.5",
     "gulp-cachebust": "0.0.6",
     "gulp-concat": "^2.6.0",
     "gulp-jshint": "^2.0.1",
@@ -16,6 +17,7 @@
     "gulp-sourcemaps": "^1.6.0",
     "gulp-stylus": "^2.4.0",
     "gulp-uglify": "^1.5.3",
+    "gulp-watch": "^4.3.9",
     "gulp-webserver": "^0.9.1",
     "jshint": "^2.9.2",
     "live-reload": "^1.1.0"
@@ -23,7 +25,7 @@
   "scripts": {},
   "keywords": [
     "angular",
-    "grid",
+    "grid"
   ],
   "repository": {
     "type": "git",
