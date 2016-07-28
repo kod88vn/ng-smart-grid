@@ -22,6 +22,7 @@
     vm.scope = $scope;
     vm.config = $scope.config;
     vm.onLockClick = toggleLock;
+    vm.onVisibleClick = onVisibleClick;
     vm.isAllChecked = true;
 
     $scope.$watchCollection(function() {
@@ -51,6 +52,11 @@
 
     function toggleLock(p) {
       p.locked = !p.locked;
+      updateData(vm.data);
+    }
+
+    function onVisibleClick(p) {
+      p.hidden = !p.hidden;
       updateData(vm.data);
     }
 
