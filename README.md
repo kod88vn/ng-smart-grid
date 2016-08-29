@@ -1,7 +1,7 @@
 ![Alt text](/sample.png?raw=true)
 # ng-smart-input
 ## Intro
-Fancy performance input box
+Fancy performance grid
 
 
 ## Installing
