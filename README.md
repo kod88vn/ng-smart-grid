@@ -5,8 +5,7 @@ Fancy performance grid
 
 
 ## Installing
-* `npm install -g gulp gulp-cli` install global cli dependencies
-* `npm install` to install dependencies
+* `npm install ng-smart-grid` 
 
 ## Usage
 1. `<script type='text/javascript' src='ng-smart-grid/dist/app.min.js'></script>`
