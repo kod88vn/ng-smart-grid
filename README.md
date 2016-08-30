@@ -9,7 +9,7 @@ Fancy performance grid capapable of: locking, re-ordering, show/hiding, template
 
 ## Usage
 1. `<script type='text/javascript' src='ng-smart-grid/dist/app.min.js'></script>`
-2. `angular.module('myApp', ['ng-smart-grid, ng-indeterminate'])`
+2. `angular.module('myApp', ['ng-smart-grid', 'ng-indeterminate'])`
 3. provide a config object
 4. or refer to sample app for basic setup
 
