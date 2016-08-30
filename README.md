@@ -1,7 +1,7 @@
 ![Alt text](/sample.PNG?raw=true)
 # ng-smart-input
 ## Intro
-Fancy performance grid
+Fancy performance grid capapable of: locking, re-ordering, show/hiding, template rendering... and a fancy indeterminate state
 
 
 ## Installing
@@ -33,5 +33,6 @@ this.data = [
 ];
 ```
 
-## Known Issues:
+## Known Limitations:
 * locked columns area must not be larger than view port () or all columns go aver flown
+* template is not compiled after injection. Compile at your own will
