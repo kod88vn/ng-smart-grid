@@ -1,7 +1,7 @@
 (function() {
 	'use-strict';
 
-	angular.module('app', ['ng-smart-grid'])
+	angular.module('app', ['ng-smart-grid', 'ng-indeterminate'])
 	.controller('mainController', MainController);
 
 	function MainController($scope) {

@@ -12,6 +12,7 @@ var pug = require('gulp-pug');
 var stylus = require('gulp-stylus');
 var watch = require('gulp-watch');
 var batch = require('gulp-batch');
+var plumber = require('gulp-plumber');
 
 gulp.task('clean', function () {
   return del(['dist']);
@@ -25,17 +26,15 @@ gulp.task('jshint', ['clean'], function() {
 
 gulp.task('html', ['jshint', 'clean'], function () {
   gulp.src("src/**/*.pug")
+    .pipe(plumber())
     .pipe(pug())
-    // .pipe(angularTemplates({
-    //   module: 'ng-smart-grid',
-    //   standAlone: false
-    // }))
     .pipe(gulp.dest('dist/templates'));
 });
 
 gulp.task('css', ['clean'], function () {
   return gulp.src('./src/**/*.styl')
-  .pipe(sourcemaps.init())
+    .pipe(plumber())
+    .pipe(sourcemaps.init())
     .pipe(stylus({
       compress: true
     }))
@@ -48,6 +47,7 @@ gulp.task('concat', ['html', 'clean'], function() {
       './dist/templates/components/ngSmartGrid.html.js',
       './src/components/**/*.js'
   	])
+    .pipe(plumber())
   	.pipe(sourcemaps.init())
     .pipe(concat('app.js'))
     .pipe(sourcemaps.write())
@@ -57,6 +57,7 @@ gulp.task('concat', ['html', 'clean'], function() {
 
 gulp.task('compress', ['concat'], function() {
   return gulp.src('dist/app.js')
+    .pipe(plumber())
     .pipe(uglify({
     	mangle: false
     }))

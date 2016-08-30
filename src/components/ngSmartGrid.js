@@ -1,7 +1,8 @@
 (function() {
   'use-strict';
 
-  angular.module('ng-smart-grid', [])
+  angular
+    .module('ng-smart-grid', [])
     .controller('SmartGridController', SmartGridController)
     .directive('smartGrid', SmartGridDirective);
 
@@ -22,8 +23,12 @@
     vm.scope = $scope;
     vm.config = $scope.config;
     vm.onLockClick = toggleLock;
+    vm.toggleSelectAll = toggleSelectAll;
     vm.onVisibleClick = onVisibleClick;
+    vm.onCheckClick = onCheckClick;
     vm.isAllChecked = true;
+    vm.isIndeterminate = false;
+    vm.oppositeSelections = {};
 
     var gridId = vm.config.gridId +'-grid';
 
@@ -69,6 +74,44 @@
     function onVisibleClick(p) {
       p.hidden = !p.hidden;
       updateData(vm.data);
+    }
+
+    function onCheckClick(row) {
+      var key = row.id;
+
+      row.checked = !row.checked;
+      if(vm.oppositeSelections[key]) {
+        delete vm.oppositeSelections[key];
+      }
+      else {
+        vm.oppositeSelections[key] = row;
+      }
+      checkIndetermination();
+    }
+
+    function toggleSelectAll() {
+      vm.isAllChecked = !vm.isAllChecked;
+
+      for(var key in vm.oppositeSelections) {
+        delete vm.oppositeSelections[key];
+      }
+
+      vm.sortedRows.forEach(function(d) {
+        d.checked = vm.isAllChecked;
+      });
+
+      checkIndetermination();
+    }
+
+    function checkIndetermination() {
+      $timeout(function() {
+        if($.isEmptyObject(vm.oppositeSelections)) {
+          vm.isIndeterminate = false;
+        }
+        else {
+          vm.isIndeterminate = true;
+        }
+      });
     }
 
     function updatePreferences(preferences) {
