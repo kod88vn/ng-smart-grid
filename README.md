@@ -9,8 +9,9 @@ Fancy performance grid capapable of: locking, re-ordering, show/hiding, template
 
 ## Usage
 1. `<script type='text/javascript' src='ng-smart-grid/dist/app.min.js'></script>`
-2. `angular.module('myApp', ['ng-smart-grid'])`
+2. `angular.module('myApp', ['ng-smart-grid, ng-indeterminate'])`
 3. provide a config object
+4. or refer to sample app for basic setup
 
 ## Config Example
 ```javascript
@@ -34,5 +35,5 @@ this.data = [
 ```
 
 ## Known Limitations:
-* locked columns area must not be larger than view port () or all columns go aver flown
+* locked columns area must not be larger than view port or all columns go over flown
 * template is not compiled after injection. Compile at your own will
