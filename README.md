@@ -1,4 +1,4 @@
-![Alt text](/sample.png?raw=true)
+![Alt text](/sample.PNG?raw=true)
 # ng-smart-input
 ## Intro
 Fancy performance grid
